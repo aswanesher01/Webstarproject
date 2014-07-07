@@ -15,7 +15,7 @@ $gagal = 0;
 for ($i=2; $i<=$baris; $i++) //akan membaca data excel mulai dari baris dua. karena baris satu di excel untuk judul field
 {
 
-	$id_paud = rand(0000, 9999);
+	$id_paud = rand(000000, 999999);
 	$nama_sekolah = $data->val($i, 2, 0); 
 	$alamat = $data->val($i, 3, 0);
 	$telepon = $data->val($i, 4, 0); 
@@ -64,11 +64,10 @@ values ('$id_paud', '$nama_sekolah', '$alamat', '$telepon', '$uang_pangkal', '$s
 	$sqlnilai="insert into bobot_penilaian (id_paud, nilai_jarak, nilai_spp, nilai_uang_pangkal, nilai_fas, nilai_gur, nilai_total) 
 	values ('$id_paud', '', '$us', '$up', '', '', '')";
 	$rsnilai=mysql_query($sqlnilai);
-	
 	if ($query) $sukses++;
 	else $gagal++;
 	} else {
-		$stat="Sudah ada data yang sama, Input gagal";	
+		$stat="Sudah ada data yang sama, Sebagian data gagal dimasukan";	
 	}
   }
 }
@@ -84,7 +83,7 @@ $gagal = 0;
 for ($i=2; $i<=$baris; $i++) //akan membaca data excel mulai dari baris dua. karena baris satu di excel untuk judul field
 {
 
-	$id_guru = rand(0000, 9999);
+	$id_guru = rand(000000, 999999);
 	$nama_sekolah = $data->val($i, 2, 1); 
 	
 	$sql="select id_paud from data_paud where nama_paud like '$nama_sekolah%'";
@@ -97,7 +96,9 @@ for ($i=2; $i<=$baris; $i++) //akan membaca data excel mulai dari baris dua. kar
 	
 	if(!empty($nama_sekolah)){ //cek salah satu inputan
 	
-	$cek=mysql_query("select * from pend_guru where Nama_Guru='$nama_guru' and id_paud='$paud'");
+	$rsss="select * from pend_guru where Nama_Guru='$nama_guru' and id_paud='$paud'";
+	//echo $rsss;
+	$cek=mysql_query($rsss);
 	$rscek=mysql_num_rows($cek);
 	if($rscek>0) {
 		echo "";
@@ -175,7 +176,7 @@ $gagal = 0;
 for ($i=2; $i<=$baris; $i++) //akan membaca data excel mulai dari baris dua. karena baris satu di excel untuk judul field
 {
 
-	$id_fas = rand(0000, 9999);
+	$id_fas = rand(000000, 999999);
 	$nama_sekolah = $data->val($i, 2, 2); 
 	
 	$sql="select id_paud from data_paud where nama_paud like '$nama_sekolah%'";
