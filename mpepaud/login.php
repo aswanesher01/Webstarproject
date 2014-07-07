@@ -6,7 +6,7 @@ Terima Kasih<hr />
   </td>
   </tr>
   <tr>
-    <td><img src="img/form-login.png" /></td>
+    <td><img src="img/form-login.png" width="211" height="200" /></td>
     <td><div class="container" style="width:300px">
 
       <form id="ff" class="form-signin" role="form" method="post" action="process.php">
