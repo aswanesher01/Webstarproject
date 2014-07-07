@@ -1,0 +1,117 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>.:: MPE PAUD ::.</title>
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="styles/demo.css">
+    <script type="text/javascript" src="src/jquery.min.js"></script>
+	<script type="text/javascript" src="src/jquery.easyui.min.js"></script>
+<style>
+body {
+	background-color:#999;
+}
+</style>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<!-- ImageReady Slices (Untitled-1) -->
+<table width="800" height="600" border="0" align="center" cellpadding="0" cellspacing="0" id="Table_01">
+	<tr>
+		<td colspan="3">
+			<img src="images/paud_01.png" width="800" height="4" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="5">
+			<img src="images/paud_02.png" width="11" height="596" alt=""></td>
+		<td>
+			<img src="images/paud_03.png" width="776" height="138" alt=""></td>
+		<td rowspan="5">
+			<img src="images/paud_04.png" width="13" height="596" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="images/paud_05.png" width="776" height="46" alt=""></td>
+	</tr>
+	<tr>
+		<td width="776" height="360" valign="top" style="background-color:#fff; background-attachment:fixed">
+        <center>
+    <h2>MPE PAUD | Application Management</h2>
+    <div style="margin:10px 0;"></div>
+    <div class="easyui-panel" title="Login" style="width:400px">
+        <div style="padding:10px 0 10px 60px">
+        <form id="ff" method="post">
+            <table>
+                <tr>
+                    <td>Username:</td>
+                    <td><input class="easyui-validatebox" type="text" name="_username" data-options="required:true"></input></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input class="easyui-validatebox" type="password" name="_password" data-options="required:true"></input></td>
+                </tr>
+            </table>
+        </form>
+        </div>
+        <div style="text-align:center;padding:5px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">Login</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">Batal</a>
+        </div>
+       
+    </div>
+    <script>
+        function submitForm(){
+            $('#ff').form('submit', {
+				url:"process.php",
+    			onSubmit: function(){
+        			// do some check
+        			// return false to prevent submit;
+					progress();
+    			},
+    			success:function(response){
+        			if(response==1) {
+						location.href='home.php';
+					} else {
+						bukaDialog();	
+					}
+    			}
+			});
+        }
+        function clearForm(){
+            $('#ff').form('clear');
+        }
+		function bukaDialog() {
+			$.messager.show({
+                title:'Notifikasi',
+                msg:'Username dan password salah / tidak terdaftar.Silahkan hubungi Administrator anda.',
+                timeout:0,
+                showType:'fade'
+            });
+		}
+		
+		function progress(){
+            var win = $.messager.progress({
+                title:'Silahkan tunggu',
+                msg:'Loading data...'
+            });
+            setTimeout(function(){
+                $.messager.progress('close');
+            },5000)
+        }
+    </script>
+</center>
+        </td>
+	</tr>
+	<tr>
+		<td width="776" height="37" align="center" background="images/paud_07.png" >
+		2014 - Sistem Penentuan Pencarian Paud 
+        </td>
+	</tr>
+	<tr>
+		<td>
+			<img src="images/paud_08.png" width="776" height="15" alt=""></td>
+	</tr>
+</table>
+<!-- End ImageReady Slices -->
+</body>
+</html>
