@@ -9,9 +9,7 @@ $uang_spp       = $_GET['uang_spp'];
 $jmlfasilitas   = $_GET['jmlfasilitas'];
 $pendidikanguru = $_GET['pendidikanguru'];
 $jenis_sekolah  = $_GET['jenis_sekolah'];
-$cb				= $_GET['cb'];
 
-echo $cb;
 
 // translating uang pangkal //
 

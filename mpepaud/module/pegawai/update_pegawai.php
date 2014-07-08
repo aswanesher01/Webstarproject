@@ -7,7 +7,7 @@ $pendidikan = $_REQUEST['Pendidikan'];
 
 include '../../inc/conn.php';
 
-$cekn=mysql_query("select nilai_jarak from bobot_penilaian where id_paud='$paud'");
+$cekn=mysql_query("select nilai_jarak from bobot_penilaian where id_paud='$id_paud'");
 $datan=mysql_fetch_array($cekn);
 
 $sql = "update pend_guru set Nama_Guru='$nama', Pendidikan='$pendidikan' where Id_guru='$id_guru' and id_paud='$id_paud'";
@@ -55,13 +55,14 @@ $result = @mysql_query($sql);
         	$sql=mysql_query("UPDATE bobot_penilaian SET nilai_gur='$jmls', nilai_total='$totalnilai' WHERE id_paud=$id_paud");
 		}
 		
-        $sqlup="UPDATE data_paud set jml_sma='$jmlsma' where id_paud='$paud'";
+        $sqlup="UPDATE data_paud set jml_sma='$jmlsma' where id_paud='$id_paud'";
+		//echo $sqlup;
         $rsup=mysql_query($sqlup);
         
-        $sqlup2="UPDATE data_paud set jml_d3='$jmld3' where id_paud='$paud'";
+        $sqlup2="UPDATE data_paud set jml_d3='$jmld3' where id_paud='$id_paud'";
         $rsup2=mysql_query($sqlup2);
         
-        $sqlup3="UPDATE data_paud set jml_s1='$jmls1' where id_paud='$paud'";
+        $sqlup3="UPDATE data_paud set jml_s1='$jmls1' where id_paud='$id_paud'";
         $rsup3=mysql_query($sqlup3);
 
 if ($result){

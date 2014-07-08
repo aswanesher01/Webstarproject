@@ -47,6 +47,7 @@ display:none;
 	display:none;	
 }
 
+
 /*.tombol {
    border-top: 1px solid #96d1f8;
    background: #65a9d7;
@@ -95,6 +96,29 @@ margin-left: 50px;
 font-size: 20px;
 color: white;
 	}
+
+.btnfas {
+	color: #fff;
+background-color: #428bca;
+border-color: #357ebd;
+display: inline-block;
+margin-bottom: 0;
+font-weight: 400;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+background-image: none;
+border: 1px solid transparent;
+white-space: nowrap;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+border-radius: 4px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
 </style>
 <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAA-Gq6foPILnL0gXPtmTcxLhSBazU3GxiNq3dXpyGawPD_3H4NXhQMHnjSg_ozuAgR-VQXc2l8okmegQ" type="text/javascript"></script>
     <script type="text/javascript">
@@ -107,6 +131,10 @@ color: white;
 	$("#tombol").click(function() {
 		$("#pencarian").show();	
 		$("#utama").hide();	
+	});
+	
+	$("#showfas").click(function() {
+		$("#pilihanfas").show();		
 	});
 
 	$("#submit").click(function() {
@@ -437,47 +465,50 @@ Uang Pangkal
 </td>
 </tr>
 <tr>
-<td>
+<td valign="top">
 Jumlah Fasilitas
 </td>
-<td>:</td>
+<td valign="top">:</td>
 <td>
 <select id="jmlfasilitas" class="form-control">
 <option value="">-- Jumlah Fasilitas --</option>
 <option value="1">10 - 15</option>
 <option value="2">4 - 10</option>
 <option value="3">3</option>
-</select>
-<!--<table>
+</select> 
+<a href="javascript:void(0)" id="showfas" class="btnfas">Lihat Fasilitas</a>
+<div id="pilihanfas" style="display:none;">
+<table width="100%">
 <tr>
-<td>
-<input type="checkbox" id="cb1" name="cb" value="arena indor">arena indor<br>
-<input type="checkbox" id="cb2"  name="cb" value="arena outdor">arena outdor<br>
-<input type="checkbox" id="cb3"  name="cb" value="rumah pohon">rumah pohon<br>
-<input type="checkbox" id="cb4"  name="cb" value="lab sains">lab sains<br>
-<input type="checkbox" id="cb5"  name="cb" value="ruang komputer">ruang komputer<br>
-<input type="checkbox" id="cb6"  name="cb" value="lingkungan aman">lingkungan aman<br>
-<input type="checkbox" id="cb7"  name="cb" value="perpustakaan">perpustakaan<br>
+<td width="130px">
+<!--<input type="checkbox" id="cb1" name="cb" value="arena indor">-->arena indor<br>
+<!--<input type="checkbox" id="cb2"  name="cb" value="arena outdor">-->arena outdor<br>
+<!--<input type="checkbox" id="cb3"  name="cb" value="rumah pohon"> -->rumah pohon<br>
+<!--<input type="checkbox" id="cb4"  name="cb" value="lab sains"> -->lab sains<br>
+<!--<input type="checkbox" id="cb5"  name="cb" value="ruang komputer"> -->ruang komputer<br>
+<!--<input type="checkbox" id="cb6"  name="cb" value="lingkungan aman"> -->lingkungan aman<br>
+<!--<input type="checkbox" id="cb7"  name="cb" value="perpustakaan"> -->perpustakaan<br>
 </td>
-<td>
-<input type="checkbox" id="cb8"  name="cb" value="kolam pasir">kolam pasir<br>
-<input type="checkbox" id="cb9"  name="cb" value="kolam bola">kolam bola<br>
-<input type="checkbox" id="cb10"  name="cb" value="kolam renang">kolam renang<br>
-<input type="checkbox" id="cb11"  name="cb" value="wastafel">wastafel<br>
-<input type="checkbox" id="cb12"  name="cb" value="toilet bersih">toilet bersih<br>
-<input type="checkbox" id="cb13"  name="cb" value="white board">white board<br>
-<input type="checkbox" id="cb14"  name="cb" value="aula">aula<br>
+<td width="130px">
+<!--<input type="checkbox" id="cb8"  name="cb" value="kolam pasir"> -->kolam pasir<br>
+<!--<input type="checkbox" id="cb9"  name="cb" value="kolam bola"> -->kolam bola<br>
+<!--<input type="checkbox" id="cb10"  name="cb" value="kolam renang"> -->kolam renang<br>
+<!--<input type="checkbox" id="cb11"  name="cb" value="wastafel"> -->wastafel<br>
+<!--<input type="checkbox" id="cb12"  name="cb" value="toilet bersih"> -->toilet bersih<br>
+<!--<input type="checkbox" id="cb13"  name="cb" value="white board"> -->white board<br>
+<!--<input type="checkbox" id="cb14"  name="cb" value="aula"> -->aula<br>
 </td>
-<td>
-<input type="checkbox" id="cb15"  name="cb" value="ruang belajar">ruang belajar<br>
-<input type="checkbox" id="cb16"  name="cb" value="antar jemput">antar jemput<br>
-<input type="checkbox" id="cb17"  name="cb" value="ekstrakurikuler">ekstrakurikuler<br>
-<input type="checkbox" id="cb18"  name="cb" value="ruang seni">ruang seni<br>
-<input type="checkbox" id="cb19"  name="cb" value="tempat parkir">tempat parkir<br>
-<input type="checkbox" id="cb20"  name="cb" value="ruang kesehatan">ruang kesehatan<br>
-<input type="checkbox" id="cb21"  name="cb" value="mushola">mushola<br>
+<td width="130px">
+<!--<input type="checkbox" id="cb15"  name="cb" value="ruang belajar"> -->ruang belajar<br>
+<!--<input type="checkbox" id="cb16"  name="cb" value="antar jemput"> -->antar jemput<br>
+<!--<input type="checkbox" id="cb17"  name="cb" value="ekstrakurikuler"> -->ekstrakurikuler<br>
+<!--<input type="checkbox" id="cb18"  name="cb" value="ruang seni"> -->ruang seni<br>
+<!--<input type="checkbox" id="cb19"  name="cb" value="tempat parkir"> -->tempat parkir<br>
+<!--<input type="checkbox" id="cb20"  name="cb" value="ruang kesehatan"> -->ruang kesehatan<br>
+<!--<input type="checkbox" id="cb21"  name="cb" value="mushola"> -->mushola<br>
 </td>
-</tr></table>-->
+</tr></table>
+</div>
 </td>
 </tr>
 

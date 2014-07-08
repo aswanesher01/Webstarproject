@@ -128,9 +128,8 @@ $rs=mysql_query($ambil);
   </div>
   <div class="form-group">
     <label for="input3" class="col-sm-2 control-label">Jenis PAUD</label>
-    <div class="col-sm-8">
-      <label class="sr-only" for="exampleInputJenisPaud2">Jenis PAUD</label>
-    	<select class="form-control" name="pendidikan" placeholder="Pendidikan Guru">
+    <div class="col-sm-8">Pendidikan
+      <select class="form-control" name="pendidikan" placeholder="Pendidikan Guru">
     	<option value=""></option>
     	<option value="SMA">SMA</option>
     	<option value="D3">Diploma</option>
@@ -163,7 +162,13 @@ $rs=mysql_query($ambil);
 </form>
 
 <? } else if($act=="edit") { 
+
+$id = $_REQUEST['id'];
+
 $ambil="select * from pend_guru where true";
+if($id!="") {
+	$ambil.=" and Id_guru='$id'";	
+}
 if($paud!="") {
 	$ambil.=" and id_paud='$paud'";	
 }
@@ -193,9 +198,9 @@ $data=mysql_fetch_array($rse);
     </div>
   </div>
   <div class="form-group">
-    <label for="input3" class="col-sm-2 control-label">Jenis PAUD</label>
+    <label for="input3" class="col-sm-2 control-label">Pendidikan</label>
     <div class="col-sm-8">
-      <label class="sr-only" for="exampleInputJenisPaud2">Jenis PAUD</label>
+      <label class="sr-only" for="exampleInputJenisPaud2">Pendidikan</label>
     	<select class="form-control" name="Pendidikan" placeholder="Pendidikan Guru">
     	<option value=""></option>
     	<option value="SMA" <?=$data['Pendidikan']=='SMA'?"selected":"";?>>SMA</option>
