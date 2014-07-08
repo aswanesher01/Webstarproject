@@ -222,7 +222,7 @@ $data=mysql_fetch_array($rse);
     <label for="input3" class="col-sm-2 control-label">Jenis PAUD</label>
     <div class="col-sm-8">
       <label class="sr-only" for="exampleInputJenisPaud2">Jenis PAUD</label>
-    	<select class="form-control" name="jenis_paud" placeholder="Jenis PAUD">
+    	<select class="form-control" name="jenis_sekolah" placeholder="Jenis PAUD">
     	<option value=""></option>
     	<option value="TK" <?=$data['jenis_sekolah']=='TK'?"selected":"";?>>TK</option>
     	<option value="RA" <?=$data['jenis_sekolah']=='RA'?"selected":"";?>>Raudhatul Athfal</option>

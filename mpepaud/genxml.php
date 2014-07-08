@@ -162,7 +162,7 @@ if($uang_spp!="") {
 if($jmlfasilitas!="") {
 	$sqls.=" and (jml_fas>='$jf1' and jml_fas<='$jf2')";	
 }
-$sqls.=" $qss HAVING distance < '%s' ORDER BY nilai_total DESC, distance DESC LIMIT 0 , 20";
+$sqls.=" $qss HAVING distance < '%s' ORDER BY nilai_total DESC, distance DESC LIMIT 3 , 20";
 //echo $sqls;
 $querys = sprintf($sqls, mysql_real_escape_string($center_lat),mysql_real_escape_string($center_lng),mysql_real_escape_string($center_lat),mysql_real_escape_string($radius));
 $results = mysql_query($querys);

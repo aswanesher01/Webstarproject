@@ -12,7 +12,7 @@ $jenis_paud     = $_REQUEST['jenis_sekolah'];
 
 include '../../inc/conn.php';
 
-$cekn=mysql_query("select nilai_jarak from bobot_penilaian where id_paud='$paud'");
+$cekn=mysql_query("select nilai_jarak from bobot_penilaian where id_paud='$id'");
 $datan=mysql_fetch_array($cekn);
 
 $sql = "update data_paud set nama_paud='$nama_paud',Alamat_Paud='$alamat_paud',Telepon='$telepon',Uang_Pangkal='$uang_pangkal', Spp='$spp', Latitude='$latitude', longitude='$longitude', jenis_sekolah='$jenis_paud' where id_paud=$id";
