@@ -41,6 +41,9 @@ $rs=mysql_query($ambil);
                   <th>Jenis</th>
                   <th>Latitude</th>
                   <th>Longitude</th>
+                  <th>Guru SMA</th>
+                  <th>Guru Diploma</th>
+                  <th>Guru Sarjana</th>
                 </tr>
               </thead>
               <tbody>
@@ -55,6 +58,9 @@ $rs=mysql_query($ambil);
                   <td><?=$row['jenis_sekolah'];?></td>
                   <td><?=$row['Latitude'];?></td>
                   <td><?=$row['longitude'];?></td>
+                  <td><?=$row['jml_sma'];?></td>
+                  <td><?=$row['jml_d3'];?></td>
+                  <td><?=$row['jml_s1'];?></td>
                 </tr>
               <? } ?>
               </tbody>
