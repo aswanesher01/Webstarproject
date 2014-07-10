@@ -126,7 +126,7 @@ user-select: none;
 	$(document).ready(function() {
 	$(".header").hide();	
 	$("#lihat_fasilitas").hide();
-	$("#pencarian").show();
+	$("#pencarian").hide();
 	
 	$("#tombol").click(function() {
 		$("#pencarian").show();	
