@@ -84,15 +84,15 @@ if($jmlfasilitas==1) {
 // translating Jml Guru //
 
 if($pendidikanguru==1) {
-    $qss="and (jml_sma>0)";
+    $qss="and (jml_sma>0 and jml_d3<1 and jml_s1<1)";
 } else if($pendidikanguru==2) {
-    $qss="and (jml_sma>0 and jml_d3>0)";
+    $qss="and (jml_sma>0 and jml_d3>0 and jml_s1<1)";
 } else if($pendidikanguru==3) {
-    $qss="and (jml_d3>0 and jml_s1>0)";
+    $qss="and (jml_d3>0 and jml_s1>0 and jml_sma<1)";
 } else if($pendidikanguru==4) {
     $qss="and (jml_sma>0 and jml_d3>0 and jml_s1>0)";
 } else if($pendidikanguru==5) {
-    $qss="and (jml_sma>0 and jml_s1>0)";
+    $qss="and (jml_sma>0 and jml_s1>0 and jml_d3<1)";
 } else if($pendidikanguru==0) {
     $qss="";
 }
@@ -102,22 +102,28 @@ $dom = new DOMDocument("1.0");
 $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
 
+$sqlfas="select fasilitas.*, data_paud.* from fasilitas, data_paud where fasilitas.id_paud=data_paud.id_paud";
+$sqlfas.=" and (Nama_fas='$cb1' or Nama_fas='$cb2' or Nama_fas='$cb3' or Nama_fas='$cb4' or Nama_fas='$cb5' or Nama_fas='$cb6' or Nama_fas='$cb7' or Nama_fas='$cb8' or Nama_fas='$cb9' or Nama_fas='$cb10' or Nama_fas='$cb11' or Nama_fas='$cb12' or Nama_fas='$cb13' or Nama_fas='$cb14' or Nama_fas='$cb15' or Nama_fas='$cb16' or Nama_fas='$cb17' or Nama_fas='$cb18' or Nama_fas='$cb19' or Nama_fas='$cb20' or Nama_fas='$cb21')";
+$rsfas=mysql_query($sqlfas);
+while($rowfas=mysql_fetch_array($rsfas)) {
+
+//echo $sqlfas;
+
 // Search the rows in the markers table
-$sqln="SELECT fasilitas.*, data_paud.id_paud, data_paud.id_paud, data_paud.Uang_Pangkal, data_paud.Spp, data_paud.nama_paud, data_paud.Alamat_Paud, data_paud.Telepon, data_paud.Uang_Pangkal, data_paud.Spp, data_paud.Latitude, data_paud.longitude, data_paud.jml_fas, data_paud.jml_sma, data_paud.jml_d3, data_paud.jml_s1,  bobot_penilaian.nilai_total, bobot_penilaian.nilai_jarak, bobot_penilaian.nilai_spp, bobot_penilaian.nilai_uang_pangkal, bobot_penilaian.nilai_fas, bobot_penilaian.nilai_gur,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud, bobot_penilaian, fasilitas where data_paud.id_paud=bobot_penilaian.id_paud and fasilitas.id_paud=data_paud.id_paud";
+$sqln="SELECT data_paud.id_paud, data_paud.id_paud, data_paud.Uang_Pangkal, data_paud.Spp, data_paud.nama_paud, data_paud.Alamat_Paud, data_paud.Telepon, data_paud.Uang_Pangkal, data_paud.Spp, data_paud.Latitude, data_paud.longitude, data_paud.jml_fas, data_paud.jml_sma, data_paud.jml_d3, data_paud.jml_s1,  bobot_penilaian.nilai_total, bobot_penilaian.nilai_jarak, bobot_penilaian.nilai_spp, bobot_penilaian.nilai_uang_pangkal, bobot_penilaian.nilai_fas, bobot_penilaian.nilai_gur,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud, bobot_penilaian where data_paud.id_paud=bobot_penilaian.id_paud and data_paud.id_paud='".$rowfas['id_paud']."'";
 if($jenis_sekolah!="") {
 	$sqln.=" and jenis_sekolah='$jenis_sekolah'";	
 }
 if($uang_pangkal!="") {
 	$sqln.=" and (Uang_Pangkal>='$up1' and Uang_Pangkal<='$up2')";	
 }
-$sqln.=" and (Nama_fas='$cb1' or Nama_fas='$cb2' or Nama_fas='$cb3' or Nama_fas='$cb3' or Nama_fas='$cb4' or Nama_fas='$cb5' or Nama_fas='$cb6' or Nama_fas='$cb7' or Nama_fas='$cb8' or Nama_fas='$cb9' or Nama_fas='$cb10' or Nama_fas='$cb11' or Nama_fas='$cb12' or Nama_fas='$cb13' or Nama_fas='$cb14' or Nama_fas='$cb15' or Nama_fas='$cb16' or Nama_fas='$cb17' or Nama_fas='$cb18' or Nama_fas='$cb19' or Nama_fas='$cb20' or Nama_fas='$cb21')";
 if($uang_spp!="") {
 	$sqln.=" and (Spp>='$sp1' and Spp<='$sp2')";	
 }
 if($jmlfasilitas!="") {
 	$sqln.=" and (jml_fas>='$jf1' and jml_fas<='$jf2')";	
 }
-$sqln.=" $qss HAVING distance < '%s' ORDER BY bobot_penilaian.nilai_total DESC LIMIT 0 , 20";
+$sqln.=" $qss HAVING distance < '%s' ORDER BY bobot_penilaian.nilai_total DESC LIMIT 0, 20";
 $query = sprintf($sqln, mysql_real_escape_string($center_lat),mysql_real_escape_string($center_lng),mysql_real_escape_string($center_lat),mysql_real_escape_string($radius));
 $result = mysql_query($query);
 
@@ -127,7 +133,7 @@ if (!$result) {
     die("Invalid query: " . mysql_error());
 }
 
-header("Content-type: text/xml");
+//header("Content-type: text/xml");
 
 // Iterate through the rows, adding XML nodes for each
 while ($row = @mysql_fetch_assoc($result)){
@@ -172,7 +178,7 @@ $parnode = $dom->appendChild($node);
 //header("Content-type: text/xml");
 
 // Search the rows in the markers table
-$sqls="SELECT fasilitas.*, data_paud.*,  bobot_penilaian.*,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud left join bobot_penilaian on data_paud.id_paud=bobot_penilaian.id_paud left join fasilitas on data_paud.id_paud=fasilitas.id_paud";
+$sqls="SELECT data_paud.*,  bobot_penilaian.*,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud left join bobot_penilaian on data_paud.id_paud=bobot_penilaian.id_paud and data_paud.id_paud='".$rowfas['id_paud']."'";
 if($jenis_sekolah!="") {
 	$sqls.=" and jenis_sekolah='$jenis_sekolah'";	
 }
@@ -182,11 +188,10 @@ if($uang_pangkal!="") {
 if($uang_spp!="") {
 	$sqls.=" and (Spp>='$sp1' and Spp<='$sp2')";	
 }
-$sqln.=" and (Nama_fas='$cb1' or Nama_fas='$cb2' or Nama_fas='$cb3' or Nama_fas='$cb3' or Nama_fas='$cb4' or Nama_fas='$cb5' or Nama_fas='$cb6' or Nama_fas='$cb7' or Nama_fas='$cb8' or Nama_fas='$cb9' or Nama_fas='$cb10' or Nama_fas='$cb11' or Nama_fas='$cb12' or Nama_fas='$cb13' or Nama_fas='$cb14' or Nama_fas='$cb15' or Nama_fas='$cb16' or Nama_fas='$cb17' or Nama_fas='$cb18' or Nama_fas='$cb19' or Nama_fas='$cb20' or Nama_fas='$cb21')";
 if($jmlfasilitas!="") {
 	$sqls.=" and (jml_fas>='$jf1' and jml_fas<='$jf2')";	
 }
-$sqls.=" $qss HAVING distance < '%s' ORDER BY nilai_total DESC, distance DESC LIMIT 3 , 20";
+$sqls.=" $qss HAVING distance < '%s' ORDER BY nilai_total DESC, distance DESC LIMIT 0, 20";
 //echo $sqls;
 $querys = sprintf($sqls, mysql_real_escape_string($center_lat),mysql_real_escape_string($center_lng),mysql_real_escape_string($center_lat),mysql_real_escape_string($radius));
 $results = mysql_query($querys);
@@ -226,5 +231,7 @@ $newnode->setAttribute("distance", $rows['distance']);
 echo $dom->saveXML();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
+}
+
 
 ?>
