@@ -178,7 +178,7 @@ $parnode = $dom->appendChild($node);
 //header("Content-type: text/xml");
 
 // Search the rows in the markers table
-$sqls="SELECT data_paud.*,  bobot_penilaian.*,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud left join bobot_penilaian on data_paud.id_paud=bobot_penilaian.id_paud and data_paud.id_paud='".$rowfas['id_paud']."'";
+$sqls="SELECT data_paud.*,  bobot_penilaian.*,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud left join bobot_penilaian on data_paud.id_paud=bobot_penilaian.id_paud";
 if($jenis_sekolah!="") {
 	$sqls.=" and jenis_sekolah='$jenis_sekolah'";	
 }
@@ -191,9 +191,9 @@ if($uang_spp!="") {
 if($jmlfasilitas!="") {
 	$sqls.=" and (jml_fas>='$jf1' and jml_fas<='$jf2')";	
 }
-$sqls.=" $qss HAVING distance < '%s' ORDER BY nilai_total DESC, distance DESC LIMIT 0, 20";
-//echo $sqls;
+$sqls.=" $qss HAVING distance < '%s' ORDER BY nilai_total DESC, distance ASC LIMIT 3";
 $querys = sprintf($sqls, mysql_real_escape_string($center_lat),mysql_real_escape_string($center_lng),mysql_real_escape_string($center_lat),mysql_real_escape_string($radius));
+//echo $querys;
 $results = mysql_query($querys);
 
 if (!$results) {

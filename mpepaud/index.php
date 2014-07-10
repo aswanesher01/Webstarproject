@@ -430,9 +430,6 @@ function load() {
  //-----untuk variabel------------------------//
         var bounds = new GLatLngBounds();
         for (var i = 0; i < markers.length; i++) {
-		if(markers[i]>3) {
-			
-		} else {
           var name = markers[i].getAttribute('name');
           var nilai = markers[i].getAttribute('nilai');
           var nilai_fas = markers[i].getAttribute('nilai_fas');
@@ -452,7 +449,6 @@ function load() {
           bobot.appendChild(bobotEntry);
           bounds.extend(point);
 		}
-        }
         
         for (var i = 0; i < 1; i++) {
           var name = markers[i].getAttribute('name');
