@@ -10,6 +10,28 @@ $jmlfasilitas   = $_GET['jmlfasilitas'];
 $pendidikanguru = $_GET['pendidikanguru'];
 $jenis_sekolah  = $_GET['jenis_sekolah'];
 
+$cb1			= $_GET['cb1'];
+$cb2			= $_GET['cb2'];
+$cb3			= $_GET['cb3'];
+$cb4			= $_GET['cb4'];
+$cb5			= $_GET['cb5'];
+$cb6			= $_GET['cb6'];
+$cb7			= $_GET['cb7'];
+$cb8			= $_GET['cb8'];
+$cb9			= $_GET['cb9'];
+$cb10			= $_GET['cb10'];
+$cb11			= $_GET['cb11'];
+$cb12			= $_GET['cb12'];
+$cb13			= $_GET['cb13'];
+$cb14			= $_GET['cb14'];
+$cb15			= $_GET['cb15'];
+$cb16			= $_GET['cb16'];
+$cb17			= $_GET['cb17'];
+$cb18			= $_GET['cb18'];
+$cb19			= $_GET['cb19'];
+$cb20			= $_GET['cb20'];
+$cb21			= $_GET['cb21'];
+
 
 // translating uang pangkal //
 
@@ -81,13 +103,14 @@ $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
 
 // Search the rows in the markers table
-$sqln="SELECT data_paud.id_paud, data_paud.id_paud, data_paud.Uang_Pangkal, data_paud.Spp, data_paud.nama_paud, data_paud.Alamat_Paud, data_paud.Telepon, data_paud.Uang_Pangkal, data_paud.Spp, data_paud.Latitude, data_paud.longitude, data_paud.jml_fas, data_paud.jml_sma, data_paud.jml_d3, data_paud.jml_s1,  bobot_penilaian.nilai_total, bobot_penilaian.nilai_jarak, bobot_penilaian.nilai_spp, bobot_penilaian.nilai_uang_pangkal, bobot_penilaian.nilai_fas, bobot_penilaian.nilai_gur,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud, bobot_penilaian where data_paud.id_paud=bobot_penilaian.id_paud";
+$sqln="SELECT fasilitas.*, data_paud.id_paud, data_paud.id_paud, data_paud.Uang_Pangkal, data_paud.Spp, data_paud.nama_paud, data_paud.Alamat_Paud, data_paud.Telepon, data_paud.Uang_Pangkal, data_paud.Spp, data_paud.Latitude, data_paud.longitude, data_paud.jml_fas, data_paud.jml_sma, data_paud.jml_d3, data_paud.jml_s1,  bobot_penilaian.nilai_total, bobot_penilaian.nilai_jarak, bobot_penilaian.nilai_spp, bobot_penilaian.nilai_uang_pangkal, bobot_penilaian.nilai_fas, bobot_penilaian.nilai_gur,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud, bobot_penilaian, fasilitas where data_paud.id_paud=bobot_penilaian.id_paud and fasilitas.id_paud=data_paud.id_paud";
 if($jenis_sekolah!="") {
 	$sqln.=" and jenis_sekolah='$jenis_sekolah'";	
 }
 if($uang_pangkal!="") {
 	$sqln.=" and (Uang_Pangkal>='$up1' and Uang_Pangkal<='$up2')";	
 }
+$sqln.=" and (Nama_fas='$cb1' or Nama_fas='$cb2' or Nama_fas='$cb3' or Nama_fas='$cb3' or Nama_fas='$cb4' or Nama_fas='$cb5' or Nama_fas='$cb6' or Nama_fas='$cb7' or Nama_fas='$cb8' or Nama_fas='$cb9' or Nama_fas='$cb10' or Nama_fas='$cb11' or Nama_fas='$cb12' or Nama_fas='$cb13' or Nama_fas='$cb14' or Nama_fas='$cb15' or Nama_fas='$cb16' or Nama_fas='$cb17' or Nama_fas='$cb18' or Nama_fas='$cb19' or Nama_fas='$cb20' or Nama_fas='$cb21')";
 if($uang_spp!="") {
 	$sqln.=" and (Spp>='$sp1' and Spp<='$sp2')";	
 }
@@ -149,7 +172,7 @@ $parnode = $dom->appendChild($node);
 //header("Content-type: text/xml");
 
 // Search the rows in the markers table
-$sqls="SELECT data_paud.*,  bobot_penilaian.*,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud left join bobot_penilaian on data_paud.id_paud=bobot_penilaian.id_paud";
+$sqls="SELECT fasilitas.*, data_paud.*,  bobot_penilaian.*,  ( 3959 * acos( cos( radians('%s') ) * cos( radians( data_paud.Latitude ) ) * cos( radians( data_paud.longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( data_paud.Latitude ) ) ) ) AS distance FROM data_paud left join bobot_penilaian on data_paud.id_paud=bobot_penilaian.id_paud left join fasilitas on data_paud.id_paud=fasilitas.id_paud";
 if($jenis_sekolah!="") {
 	$sqls.=" and jenis_sekolah='$jenis_sekolah'";	
 }
@@ -159,6 +182,7 @@ if($uang_pangkal!="") {
 if($uang_spp!="") {
 	$sqls.=" and (Spp>='$sp1' and Spp<='$sp2')";	
 }
+$sqln.=" and (Nama_fas='$cb1' or Nama_fas='$cb2' or Nama_fas='$cb3' or Nama_fas='$cb3' or Nama_fas='$cb4' or Nama_fas='$cb5' or Nama_fas='$cb6' or Nama_fas='$cb7' or Nama_fas='$cb8' or Nama_fas='$cb9' or Nama_fas='$cb10' or Nama_fas='$cb11' or Nama_fas='$cb12' or Nama_fas='$cb13' or Nama_fas='$cb14' or Nama_fas='$cb15' or Nama_fas='$cb16' or Nama_fas='$cb17' or Nama_fas='$cb18' or Nama_fas='$cb19' or Nama_fas='$cb20' or Nama_fas='$cb21')";
 if($jmlfasilitas!="") {
 	$sqls.=" and (jml_fas>='$jf1' and jml_fas<='$jf2')";	
 }

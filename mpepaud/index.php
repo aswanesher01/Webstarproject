@@ -126,7 +126,7 @@ user-select: none;
 	$(document).ready(function() {
 	$(".header").hide();	
 	$("#lihat_fasilitas").hide();
-	$("#pencarian").hide();
+	$("#pencarian").show();
 	
 	$("#tombol").click(function() {
 		$("#pencarian").show();	
@@ -164,10 +164,118 @@ function load() {
 	  var jensek = document.getElementById('jenis_sekolah').value;
       var uang_spp = document.getElementById('uang_spp').value;
       var uang_pangkal = document.getElementById('uang_pangkal').value;
-      var jmlfasilitas = document.getElementById('jmlfasilitas').value;
+      //var jmlfasilitas = document.getElementById('jmlfasilitas').value;
       var pendidikanguru = document.getElementById('pendidikanguru').value;
+	 
+	  if (document.getElementById('cb1').checked) {
+            var cb1 = document.getElementById('cb1').value;
+	  } else {
+		    var cb1 = "";
+	  }
+	  if (document.getElementById('cb2').checked) {
+	  		var cb2 = document.getElementById('cb2').value;
+	  } else {
+		    var cb2 = "";
+	  }
+	  if (document.getElementById('cb3').checked) {
+	  		var cb3 = document.getElementById('cb3').value;
+	  } else {
+		    var cb3 = "";
+	  }
+	  if (document.getElementById('cb4').checked) {
+	  		var cb4 = document.getElementById('cb4').value;
+	  } else {
+		    var cb4 = "";
+	  }
+	  if (document.getElementById('cb5').checked) {
+	  		var cb5 = document.getElementById('cb5').value;
+	  } else {
+		    var cb5 = "";
+	  }
+	  if (document.getElementById('cb6').checked) {
+	  		var cb6 = document.getElementById('cb6').value;
+	  } else {
+		    var cb6 = "";
+	  }
+	  if (document.getElementById('cb7').checked) {
+	  		var cb7 = document.getElementById('cb7').value;
+	  } else {
+		    var cb7 = "";
+	  }
+	  if (document.getElementById('cb8').checked) {
+	  		var cb8 = document.getElementById('cb8').value;
+	  } else {
+		    var cb8 = "";
+	  }
+	  if (document.getElementById('cb9').checked) {
+	  		var cb9 = document.getElementById('cb9').value;
+	  } else {
+		    var cb9 = "";
+	  }
+	  if (document.getElementById('cb10').checked) {
+	  		var cb10 = document.getElementById('cb10').value;
+	  } else {
+		    var cb10 = "";
+	  }
+	  if (document.getElementById('cb11').checked) {
+	  		var cb11 = document.getElementById('cb11').value;
+	  } else {
+		    var cb11 = "";
+	  }
+	  if (document.getElementById('cb12').checked) {
+	  		var cb12 = document.getElementById('cb12').value;
+	  } else {
+		    var cb12 = "";
+	  }
+	  if (document.getElementById('cb13').checked) {
+	  		var cb13 = document.getElementById('cb13').value;
+	  } else {
+		    var cb13 = "";
+	  }
+	  if (document.getElementById('cb14').checked) {
+	  		var cb14 = document.getElementById('cb14').value;
+	  } else {
+		    var cb14 = "";
+	  }
+	  if (document.getElementById('cb15').checked) {
+	  		var cb15 = document.getElementById('cb15').value;
+	  } else {
+		    var cb15 = "";
+	  }
+	  if (document.getElementById('cb16').checked) {
+	  		var cb16 = document.getElementById('cb16').value;
+	  } else {
+		    var cb16 = "";
+	  }
+	  if (document.getElementById('cb17').checked) {
+	  		var cb17 = document.getElementById('cb17').value;
+	  } else {
+		    var cb17 = "";
+	  }
+	  if (document.getElementById('cb18').checked) {
+	  		var cb18 = document.getElementById('cb18').value;
+	  } else {
+		    var cb18 = "";
+	  }
+	  if (document.getElementById('cb19').checked) {
+	  		var cb19 = document.getElementById('cb19').value;
+	  } else {
+		    var cb19 = "";
+	  }
+	  if (document.getElementById('cb20').checked) {
+	  		var cb20 = document.getElementById('cb20').value;
+	  } else {
+		    var cb20 = "";
+	  }
+	  if (document.getElementById('cb21').checked) {
+	  		var cb21 = document.getElementById('cb21').value;
+	  } else {
+		    var cb21 = "";
+	  }
 	  
-	  	if((jensek=='')||(uang_spp=='')||(uang_spp=='')||(uang_pangkal=='')||(jmlfasilitas=='')||(pendidikanguru=='')) {
+	  var data='&cb1='+cb1+'&cb2='+cb2+'&cb3='+cb3+'&cb4='+cb4+'&cb5='+cb5+'&cb6='+cb6+'&cb7='+cb7+'&cb8='+cb8+'&cb9='+cb9+'&cb10='+cb10+'&cb11='+cb11+'&cb12='+cb12+'&cb13='+cb13+'&cb14='+cb14+'&cb15='+cb15+'&cb16='+cb16+'&cb17='+cb17+'&cb18='+cb18+'&cb19='+cb19+'&cb20='+cb20+'&cb21='+cb21
+	  
+	  	if((jensek=='')||(uang_spp=='')||(uang_spp=='')||(uang_pangkal=='')/*||(jmlfasilitas=='')*/||(pendidikanguru=='')||(data=='')) {
 		  	alert('Silahkan isi semua kolom pencarian');
 		} else {
 	  
@@ -186,9 +294,118 @@ function load() {
       var jensek = document.getElementById('jenis_sekolah').value;
       var uang_spp = document.getElementById('uang_spp').value;
       var uang_pangkal = document.getElementById('uang_pangkal').value;
-      var jmlfasilitas = document.getElementById('jmlfasilitas').value;
+      //var jmlfasilitas = document.getElementById('jmlfasilitas').value;
       var pendidikanguru = document.getElementById('pendidikanguru').value;
-      var searchUrl = 'genxml.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius +'&jenis_sekolah='+jensek+'&uang_spp='+uang_spp+'&uang_pangkal='+uang_pangkal+'&jmlfasilitas='+jmlfasilitas+'&pendidikanguru='+pendidikanguru;
+	  
+	  if (document.getElementById('cb1').checked) {
+            var cb1 = document.getElementById('cb1').value;
+	  } else {
+		    var cb1 = "";
+	  }
+	  if (document.getElementById('cb2').checked) {
+	  		var cb2 = document.getElementById('cb2').value;
+	  } else {
+		    var cb2 = "";
+	  }
+	  if (document.getElementById('cb3').checked) {
+	  		var cb3 = document.getElementById('cb3').value;
+	  } else {
+		    var cb3 = "";
+	  }
+	  if (document.getElementById('cb4').checked) {
+	  		var cb4 = document.getElementById('cb4').value;
+	  } else {
+		    var cb4 = "";
+	  }
+	  if (document.getElementById('cb5').checked) {
+	  		var cb5 = document.getElementById('cb5').value;
+	  } else {
+		    var cb5 = "";
+	  }
+	  if (document.getElementById('cb6').checked) {
+	  		var cb6 = document.getElementById('cb6').value;
+	  } else {
+		    var cb6 = "";
+	  }
+	  if (document.getElementById('cb7').checked) {
+	  		var cb7 = document.getElementById('cb7').value;
+	  } else {
+		    var cb7 = "";
+	  }
+	  if (document.getElementById('cb8').checked) {
+	  		var cb8 = document.getElementById('cb8').value;
+	  } else {
+		    var cb8 = "";
+	  }
+	  if (document.getElementById('cb9').checked) {
+	  		var cb9 = document.getElementById('cb9').value;
+	  } else {
+		    var cb9 = "";
+	  }
+	  if (document.getElementById('cb10').checked) {
+	  		var cb10 = document.getElementById('cb10').value;
+	  } else {
+		    var cb10 = "";
+	  }
+	  if (document.getElementById('cb11').checked) {
+	  		var cb11 = document.getElementById('cb11').value;
+	  } else {
+		    var cb11 = "";
+	  }
+	  if (document.getElementById('cb12').checked) {
+	  		var cb12 = document.getElementById('cb12').value;
+	  } else {
+		    var cb12 = "";
+	  }
+	  if (document.getElementById('cb13').checked) {
+	  		var cb13 = document.getElementById('cb13').value;
+	  } else {
+		    var cb13 = "";
+	  }
+	  if (document.getElementById('cb14').checked) {
+	  		var cb14 = document.getElementById('cb14').value;
+	  } else {
+		    var cb14 = "";
+	  }
+	  if (document.getElementById('cb15').checked) {
+	  		var cb15 = document.getElementById('cb15').value;
+	  } else {
+		    var cb15 = "";
+	  }
+	  if (document.getElementById('cb16').checked) {
+	  		var cb16 = document.getElementById('cb16').value;
+	  } else {
+		    var cb16 = "";
+	  }
+	  if (document.getElementById('cb17').checked) {
+	  		var cb17 = document.getElementById('cb17').value;
+	  } else {
+		    var cb17 = "";
+	  }
+	  if (document.getElementById('cb18').checked) {
+	  		var cb18 = document.getElementById('cb18').value;
+	  } else {
+		    var cb18 = "";
+	  }
+	  if (document.getElementById('cb19').checked) {
+	  		var cb19 = document.getElementById('cb19').value;
+	  } else {
+		    var cb19 = "";
+	  }
+	  if (document.getElementById('cb20').checked) {
+	  		var cb20 = document.getElementById('cb20').value;
+	  } else {
+		    var cb20 = "";
+	  }
+	  if (document.getElementById('cb21').checked) {
+	  		var cb21 = document.getElementById('cb21').value;
+	  } else {
+		    var cb21 = "";
+	  }
+	  
+	  var data='&cb1='+cb1+'&cb2='+cb2+'&cb3='+cb3+'&cb4='+cb4+'&cb5='+cb5+'&cb6='+cb6+'&cb7='+cb7+'&cb8='+cb8+'&cb9='+cb9+'&cb10='+cb10+'&cb11='+cb11+'&cb12='+cb12+'&cb13='+cb13+'&cb14='+cb14+'&cb15='+cb15+'&cb16='+cb16+'&cb17='+cb17+'&cb18='+cb18+'&cb19='+cb19+'&cb20='+cb20+'&cb21='+cb21
+	  
+      var searchUrl = 'genxml.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius +'&jenis_sekolah='+jensek+'&uang_spp='+uang_spp+'&uang_pangkal='+uang_pangkal+'&pendidikanguru='+pendidikanguru+data;
  GDownloadUrl(searchUrl, function(data) {
         var xml = GXml.parse(data);
         var markers = xml.documentElement.getElementsByTagName('marker');
@@ -470,42 +687,42 @@ Jumlah Fasilitas
 </td>
 <td valign="top">:</td>
 <td>
-<select id="jmlfasilitas" class="form-control">
+<!--<select id="jmlfasilitas" class="form-control">
 <option value="">-- Jumlah Fasilitas --</option>
 <option value="1">10 - 15</option>
 <option value="2">4 - 10</option>
 <option value="3">3</option>
-</select> 
-<a href="javascript:void(0)" id="showfas" class="btnfas">Lihat Fasilitas</a>
-<div id="pilihanfas" style="display:none;">
+</select>--> 
+<!--<a href="javascript:void(0)" id="showfas" class="btnfas">Lihat Fasilitas</a>-->
+<div id="pilihanfas">
 <table width="100%">
 <tr>
 <td width="130px">
-<!--<input type="checkbox" id="cb1" name="cb" value="arena indor">-->arena indor<br>
-<!--<input type="checkbox" id="cb2"  name="cb" value="arena outdor">-->arena outdor<br>
-<!--<input type="checkbox" id="cb3"  name="cb" value="rumah pohon"> -->rumah pohon<br>
-<!--<input type="checkbox" id="cb4"  name="cb" value="lab sains"> -->lab sains<br>
-<!--<input type="checkbox" id="cb5"  name="cb" value="ruang komputer"> -->ruang komputer<br>
-<!--<input type="checkbox" id="cb6"  name="cb" value="lingkungan aman"> -->lingkungan aman<br>
-<!--<input type="checkbox" id="cb7"  name="cb" value="perpustakaan"> -->perpustakaan<br>
+<input type="checkbox" id="cb1" name="cb1" value="arena indor">arena indor<br>
+<input type="checkbox" id="cb2"  name="cb2" value="arena outdor">arena outdor<br>
+<input type="checkbox" id="cb3"  name="cb3" value="rumah pohon">rumah pohon<br>
+<input type="checkbox" id="cb4"  name="cb4" value="lab sains">lab sains<br>
+<input type="checkbox" id="cb5"  name="cb5" value="ruang komputer">ruang komputer<br>
+<input type="checkbox" id="cb6"  name="cb6" value="lingkungan aman">lingkungan aman<br>
+<input type="checkbox" id="cb7"  name="cb7" value="perpustakaan">perpustakaan<br>
 </td>
 <td width="130px">
-<!--<input type="checkbox" id="cb8"  name="cb" value="kolam pasir"> -->kolam pasir<br>
-<!--<input type="checkbox" id="cb9"  name="cb" value="kolam bola"> -->kolam bola<br>
-<!--<input type="checkbox" id="cb10"  name="cb" value="kolam renang"> -->kolam renang<br>
-<!--<input type="checkbox" id="cb11"  name="cb" value="wastafel"> -->wastafel<br>
-<!--<input type="checkbox" id="cb12"  name="cb" value="toilet bersih"> -->toilet bersih<br>
-<!--<input type="checkbox" id="cb13"  name="cb" value="white board"> -->white board<br>
-<!--<input type="checkbox" id="cb14"  name="cb" value="aula"> -->aula<br>
+<input type="checkbox" id="cb8"  name="cb8" value="kolam pasir">kolam pasir<br>
+<input type="checkbox" id="cb9"  name="cb9" value="kolam bola">kolam bola<br>
+<input type="checkbox" id="cb10"  name="cb10" value="kolam renang">kolam renang<br>
+<input type="checkbox" id="cb11"  name="cb11" value="wastafel">wastafel<br>
+<input type="checkbox" id="cb12"  name="cb12" value="toilet bersih">toilet bersih<br>
+<input type="checkbox" id="cb13"  name="cb13" value="white board">white board<br>
+<input type="checkbox" id="cb14"  name="cb14" value="aula">aula<br>
 </td>
 <td width="130px">
-<!--<input type="checkbox" id="cb15"  name="cb" value="ruang belajar"> -->ruang belajar<br>
-<!--<input type="checkbox" id="cb16"  name="cb" value="antar jemput"> -->antar jemput<br>
-<!--<input type="checkbox" id="cb17"  name="cb" value="ekstrakurikuler"> -->ekstrakurikuler<br>
-<!--<input type="checkbox" id="cb18"  name="cb" value="ruang seni"> -->ruang seni<br>
-<!--<input type="checkbox" id="cb19"  name="cb" value="tempat parkir"> -->tempat parkir<br>
-<!--<input type="checkbox" id="cb20"  name="cb" value="ruang kesehatan"> -->ruang kesehatan<br>
-<!--<input type="checkbox" id="cb21"  name="cb" value="mushola"> -->mushola<br>
+<input type="checkbox" id="cb15"  name="cb15" value="ruang belajar">ruang belajar<br>
+<input type="checkbox" id="cb16"  name="cb16" value="antar jemput">antar jemput<br>
+<input type="checkbox" id="cb17"  name="cb17" value="ekstrakurikuler">ekstrakurikuler<br>
+<input type="checkbox" id="cb18"  name="cb18" value="ruang seni">ruang seni<br>
+<input type="checkbox" id="cb19"  name="cb19" value="tempat parkir">tempat parkir<br>
+<input type="checkbox" id="cb20"  name="cb20" value="ruang kesehatan">ruang kesehatan<br>
+<input type="checkbox" id="cb21"  name="cb21" value="mushola">mushola<br>
 </td>
 </tr></table>
 </div>
