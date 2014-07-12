@@ -1,0 +1,129 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/untitled"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Register" >
+
+    <EditText
+        android:id="@+id/ednama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/nama_lengkap"
+        android:inputType="none" />
+
+        <requestFocus />
+
+    <TextView
+        android:id="@+id/tnama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ednama"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:text="@string/nama_lengkap" />
+
+    <TextView
+        android:id="@+id/tnohp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ednama"
+        android:layout_below="@+id/ednama"
+        android:layout_marginTop="5dp"
+        android:text="@string/tnohp" />
+
+    <EditText
+        android:id="@+id/ednohp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tnohp"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/tnohp"
+        android:inputType="phone" >
+        
+    </EditText>
+
+    <TextView
+        android:id="@+id/tpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ednohp"
+        android:layout_below="@+id/ednohp"
+        android:layout_marginTop="5dp"
+        android:text="@string/tpass" />
+
+    <EditText
+        android:id="@+id/edpassreg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tpass"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/tpass"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/trepass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edpassreg"
+        android:layout_marginTop="5dp"
+        android:text="@string/trepass" />
+
+    <EditText
+        android:id="@+id/edrepass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/trepass"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/trepass"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/temail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edrepass"
+        android:layout_below="@+id/edrepass"
+        android:layout_marginTop="5dp"
+        android:text="@string/temail" />
+
+    <EditText
+        android:id="@+id/edemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/temail"
+        android:layout_below="@+id/temail"
+        android:ems="10"
+        android:hint="@string/temail"
+        android:inputType="textEmailAddress" />
+
+    <Button
+        android:id="@+id/bregister"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/trepass"
+        android:layout_below="@+id/edemail"
+        android:text="@string/breg" />
+
+    <Button
+        android:id="@+id/bbatal"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/edemail"
+        android:layout_alignTop="@+id/bregister"
+        android:text="@string/bbatal" />
+
+</RelativeLayout>

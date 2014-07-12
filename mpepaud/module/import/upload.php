@@ -2,6 +2,11 @@
 
 include "inc/conn.php";
 include "excel_reader2.php";
+
+$querys=mysql_query("truncate table data_paud");
+	$querys=mysql_query("truncate table bobot_penilaian");	
+	$querys=mysql_query("truncate table pend_guru");
+	$querys=mysql_query("truncate table fasilitas");
  
 $data = new Spreadsheet_Excel_Reader($_FILES['userfile']['tmp_name']);
 
