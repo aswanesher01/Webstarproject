@@ -38,8 +38,9 @@ elseif (cek_user($email)) {
 echo json_encode($response);
 }
 else{
+	$pesan="Registrasi telah berhasil, utk mengaktifkan premi anda silahkan transfer Rp. 200.000 ke no rek. 123123 BCA an Agus Setiawan";
     $result = mysql_query("INSERT INTO register_user(Id_dbs, nama, nomor_hp,password,email) VALUES('11', '$nama', '$nohp','$pass','$email')");
- 
+    $sms=mysql_query("INSERT INTO outbox(DestinationNumber, TextDecoded) VALUES ('".$nohp."', '".$pesan."')");
 
     if ($result) {
       
