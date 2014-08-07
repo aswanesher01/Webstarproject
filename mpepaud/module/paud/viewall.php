@@ -26,7 +26,7 @@ $rs=mysql_query($ambil);
 </head>
 <body>
 <div class="page-header">
-  <h3>Rincian Data PAUD</h3><a class="btn btn-primary" href="?module=module/paud/index.php" role="button">Kembali</a>
+  <h3>Rincian Data PAUD</h3><a class="btn btn-primary" href="?module=module/paud/index.php&jenis_paud=<?=$jenis_paud;?>" role="button">Kembali</a>
 </div>
     <div class="table-responsive">
             <table class="table table-hover">

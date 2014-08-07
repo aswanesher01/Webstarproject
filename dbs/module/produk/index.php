@@ -9,7 +9,7 @@ $jml_data		= $_REQUEST['jml_data'];
 
 $ambil="select * from produk where true";
 if($nama_pemilik!="") {
-	$ambil.=" and nama_pemilik like '$paud%'";	
+	$ambil.=" and nama_pemilik like '%$paud%'";	
 }
 if($thn_rakit!="") {
 	$ambil.=" and tahun_rakit='$thn_rakit'";	
@@ -77,6 +77,7 @@ $(document).ready(function() {
     </select>
   </div>
   <button type="submit" class="btn btn-primary">Cari</button>
+  <a href="module/excel/produk.php?nama_pemilik=<?=$nama_pemilik?>&thn_rakit=<?=$thn_rakit?>&tgl_daftar=<?=$tgl_daftar?>&tgl_aktif=<?=$tgl_aktif?>&jml_data=<?=$jml_data?>" class="btn btn-primary">Export to Excel</a>
 </form>
 <hr>
     <div class="table-responsive">

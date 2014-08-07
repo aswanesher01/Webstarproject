@@ -7,7 +7,7 @@ $jml_data	= $_REQUEST['jml_data'];
 
 $ambil="select * from nasabah where true";
 if($nama!="") {
-	$ambil.=" and nama like '$nama%'";	
+	$ambil.=" and nama like '%$nama%' or Id_dbs like '%$nama%'";	
 }
 if($nomor_hp!="") {
 	$ambil.=" and nomor_hp='$nomor_hp%'";	
@@ -16,7 +16,7 @@ $ambil.=" order by nama asc";
 if($jml_data!="") {
 	$ambil.=" limit $jml_data";
 }
-
+//echo $ambil;
 $rs=mysql_query($ambil);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -49,6 +49,7 @@ $rs=mysql_query($ambil);
     </select>
   </div>
   <button type="submit" class="btn btn-primary">Cari</button>
+  <a href="module/excel/member.php?nama=<?=$nama?>&nomor_hp=<?=$nomor_hp?>&jml_data=<?=$jml_data?>" class="btn btn-primary">Export to Excel</a>
 </form>
 <hr>
     <div class="table-responsive">

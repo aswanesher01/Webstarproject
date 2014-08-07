@@ -21,14 +21,15 @@ if (isset($_POST['email']) && isset($_POST['pass'])){
     $db = new DB_CONNECT();
  
     // mysql inserting a new row
-    $result = mysql_query("select * From register_user where email='$email' and password='$pass'");
+    $result = mysql_query("select * From nasabah where Id_dbs='$email' and password='$pass'");
  
     // check if row
     if (mysql_num_rows($result) > 0) {
         // successfully inserted into database
         $response["success"] = 1;
         $response["message"] = "Login successfully.";
- 
+ 	  $isi=mysql_fetch_array($result);
+	  $response["name"]=$isi[1];
         // echoing JSON response
         echo json_encode($response);
     } else {

@@ -13,8 +13,9 @@
 $response = array();
  
 
-if (isset($_POST['nama']) && isset($_POST['nohp']) && isset($_POST['email'])&&($_POST['pass'])) {
+if (isset($_REQUEST['nama']) && isset($_REQUEST['nohp']) && isset($_REQUEST['email'])&& isset($_REQUEST['pass'])&& isset($_REQUEST['id_dbs'])) {
  
+	$id_dbs=$_POST['id_dbs'];
     $nama = $_POST['nama'];
     $nohp = $_POST['nohp'];
     $email= $_POST['email'];
@@ -37,15 +38,21 @@ elseif (cek_user($email)) {
 
 echo json_encode($response);
 }
+elseif(cek_id($id_dbs)){
+        $response["success"] = 0;
+        $response["message"] = "ID Dbs already existed.";
+
+echo json_encode($response);
+
+}
 else{
-	$pesan="Registrasi telah berhasil, utk mengaktifkan premi anda silahkan transfer Rp. 200.000 ke no rek. 123123 BCA an Agus Setiawan";
-    $result = mysql_query("INSERT INTO register_user(Id_dbs, nama, nomor_hp,password,email) VALUES('11', '$nama', '$nohp','$pass','$email')");
-    $sms=mysql_query("INSERT INTO outbox(DestinationNumber, TextDecoded) VALUES ('".$nohp."', '".$pesan."')");
+    $result = mysql_query("INSERT INTO nasabah(Id_dbs, nama, nomor_hp,password,email,re_password) VALUES('$id_dbs', '$nama', '$nohp','$pass','$email','$pass')");
+ 
 
     if ($result) {
       
         $response["success"] = 1;
-        $response["message"] = "Product successfully created.";
+        $response["message"] = "Users successfully created.";
  
        
         echo json_encode($response);
@@ -70,7 +77,7 @@ else{
 
 
     function cek_user($email) {
-        $result = mysql_query("SELECT email from register_user WHERE email = '$email'");
+        $result = mysql_query("SELECT email from nasabah WHERE email = '$email'");
         $no_of_rows = mysql_num_rows($result);
         if ($no_of_rows > 0) {
            
@@ -79,6 +86,18 @@ else{
             return false;
         }
     }
+
+    function cek_id($id_dbs) {
+        $result = mysql_query("SELECT id_dbs from nasabah WHERE id_dbs = '$id_dbs'");
+        $no_of_rows = mysql_num_rows($result);
+        if ($no_of_rows > 0) {
+           
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     
     function cek_email($email){
    $isValid = true;

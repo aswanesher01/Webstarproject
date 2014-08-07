@@ -94,7 +94,7 @@ $rs=mysql_query($ambil);
                   <td><?=$row['jenis_sekolah'];?></td>
                   <td><a class="btn btn-sm btn-primary" href="?module=module/paud/index.php&act=edit&id=<?=$row['id_paud'];?>" role="button">Ubah</a>
                   <a class="btn btn-sm btn-danger" onClick="return confirm('Anda yakin akan menghapus data ini?')" href="?module=module/paud/remove_paud.php&id=<?=$row['id_paud'];?>" role="button">Hapus</a>
-                  <a class="btn btn-sm btn-warning" href="?module=module/paud/viewall.php&id=<?=$row['id_paud'];?>" role="button">Rincian</a></td>
+                  <a class="btn btn-sm btn-warning" href="?module=module/paud/viewall.php&id=<?=$row['id_paud'];?>&jenis_paud=<?=$row['jenis_sekolah'];?>" role="button">Rincian</a></td>
                 </tr>
               <? } ?>
               </tbody>

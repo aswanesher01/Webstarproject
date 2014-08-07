@@ -16,7 +16,7 @@ if($_SESSION['username']!="") {
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title>.: DBS Application :.</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="src/jquery_new.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <link href="styles/datepicker.css" rel="stylesheet">

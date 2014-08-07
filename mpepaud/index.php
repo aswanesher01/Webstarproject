@@ -126,7 +126,7 @@ user-select: none;
 	$(document).ready(function() {
 	$(".header").hide();	
 	$("#lihat_fasilitas").hide();
-	$("#pencarian").hide();
+	$("#pencarian").show();
 	
 	$("#tombol").click(function() {
 		$("#pencarian").show();	
@@ -290,6 +290,7 @@ function load() {
     }
   
     function searchLocationsNear(center) {
+	  var address = document.getElementById('addressInput').value;
       var radius = document.getElementById('radiusSelect').value;
       var jensek = document.getElementById('jenis_sekolah').value;
       var uang_spp = document.getElementById('uang_spp').value;
@@ -405,7 +406,7 @@ function load() {
 	  
 	  var data='&cb1='+cb1+'&cb2='+cb2+'&cb3='+cb3+'&cb4='+cb4+'&cb5='+cb5+'&cb6='+cb6+'&cb7='+cb7+'&cb8='+cb8+'&cb9='+cb9+'&cb10='+cb10+'&cb11='+cb11+'&cb12='+cb12+'&cb13='+cb13+'&cb14='+cb14+'&cb15='+cb15+'&cb16='+cb16+'&cb17='+cb17+'&cb18='+cb18+'&cb19='+cb19+'&cb20='+cb20+'&cb21='+cb21
 	  
-      var searchUrl = 'genxml.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius +'&jenis_sekolah='+jensek+'&uang_spp='+uang_spp+'&uang_pangkal='+uang_pangkal+'&pendidikanguru='+pendidikanguru+data;
+      var searchUrl = 'genxml.php?address='+address+'&lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius +'&jenis_sekolah='+jensek+'&uang_spp='+uang_spp+'&uang_pangkal='+uang_pangkal+'&pendidikanguru='+pendidikanguru+data;
  GDownloadUrl(searchUrl, function(data) {
         var xml = GXml.parse(data);
         var markers = xml.documentElement.getElementsByTagName('marker');
@@ -734,6 +735,8 @@ Pendidikan Guru
 <select id="pendidikanguru" class="form-control">
 <option value="">-- Pendidikan guru --</option>
 <option value="1">SMA</option>
+<option value="6">Diploma</option>
+<option value="7">Sarjana</option>
 <option value="2">SMA + Diploma</option>
 <option value="5">SMA + Sarjana</option>
 <option value="3">Diploma + Sarjana</option>
